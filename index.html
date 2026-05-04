@@ -3,1160 +3,341 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gaskins on Emma — A Modern American Steakhouse</title>
-  <meta name="description" content="Precise cooking, bold flavors, and an atmosphere that makes you feel like you're getting away with something. Downtown Springdale, AR." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Gaskins on Emma | Modern American Steakhouse</title>
+  <meta name="description" content="A cinematic one-page redesign for Gaskins on Emma in Downtown Springdale, Arkansas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!--
-  =============================================================
-  GASKINS ON EMMA — STANDALONE WEBSITE
-  =============================================================
-  IMAGES: Upload these to an /images/ folder in your GitHub repo.
-    images/hero.jpg          → table-spread photo
-    images/dining.jpg        → dining room photo
-    images/bar.jpg           → bar interior (wide marble counter)
-    images/entry.jpg         → entry with golden orb lights
-    images/chef.jpg          → Chef Sam Walker portrait
-    images/oysters.jpg       → oysters on ice
-    images/steak.jpg         → steak with frites
-    images/salmon.jpg        → crispy skin salmon
-    images/filet.jpg         → filet with broccolini
-    images/calamari.jpg      → calamari
-    images/logo.png          → restaurant logo (white on transparent)
+    GASKINS ON EMMA — PREMIUM DEMO BUILD
+    Drop this file in your GitHub repo as index.html.
 
-  SWAP POINTS (search "SWAP"):
-    - OpenTable reservation link
-    - Phone number
-    - Instagram URL
-    - Facebook URL
-    - Events email address
-  =============================================================
+    Keep your current images folder:
+      ./images/logo.png
+      ./images/hero.jpg
+      ./images/dining.jpg
+      ./images/bar.jpg
+      ./images/entry.jpg
+      ./images/chef.jpg
+      ./images/oysters.jpg
+      ./images/steak.jpg
+      ./images/salmon.jpg
+      ./images/filet.jpg
+      ./images/calamari.jpg
+
+    Main swaps:
+      RESY_URL below
+      gift card URL if you find the exact one
+      social links if needed
   -->
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root{
+      --bg:#050403;
+      --bg2:#0b0806;
+      --card:#120d09;
+      --card2:#19110b;
+      --cream:#f5efe5;
+      --muted:#a99a8b;
+      --soft:#7b6c60;
+      --gold:#c9853d;
+      --gold2:#ffbf68;
+      --ember:#6f2b13;
+      --wine:#32110e;
+      --line:rgba(255,255,255,.105);
+      --line2:rgba(201,133,61,.35);
+      --serif:'Cormorant Garamond', Georgia, serif;
+      --sans:'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --shadow:0 30px 80px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{font-family:var(--sans);background:radial-gradient(circle at 80% 0%,rgba(201,133,61,.14),transparent 35%),linear-gradient(180deg,#050403,#090604 35%,#050403);color:var(--cream);overflow-x:hidden;line-height:1.6;font-weight:300}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none} img{max-width:100%;display:block} button{font:inherit;color:inherit}
+    .container{width:min(1180px,calc(100% - 36px));margin:0 auto}.serif{font-family:var(--serif)}.gold{color:var(--gold2)}.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.68rem;color:var(--gold2);font-weight:700}.section-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);line-height:.95;font-weight:300;letter-spacing:-.04em}.section-copy{color:var(--muted);max-width:650px;font-size:1rem}.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border:1px solid var(--line);padding:.92rem 1.25rem;border-radius:999px;text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;font-weight:800;cursor:pointer;transition:.25s ease;background:rgba(255,255,255,.045);backdrop-filter:blur(14px)}.btn:hover{transform:translateY(-2px);border-color:var(--line2);background:rgba(201,133,61,.14)}.btn-primary{background:linear-gradient(135deg,var(--gold),#9f5d23);border-color:rgba(255,191,104,.55);box-shadow:0 14px 40px rgba(201,133,61,.26)}.btn-primary:hover{background:linear-gradient(135deg,#e49d51,#a76527)}.btn-dark{background:rgba(0,0,0,.45)}
 
-    :root {
-      --gold: #C8833A;
-      --gold-light: #d4944d;
-      --black: #080808;
-      --black-soft: #0f0f0f;
-      --black-card: #141414;
-      --white: #f5f0ea;
-      --muted: #6b6560;
-      --border: rgba(255,255,255,0.08);
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-sans: 'Inter', system-ui, sans-serif;
-    }
+    .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+    .glow{position:absolute;border-radius:999px;filter:blur(60px);opacity:.35;pointer-events:none}.glow.one{width:320px;height:320px;background:var(--gold);top:10%;left:-120px}.glow.two{width:380px;height:380px;background:var(--wine);right:-160px;bottom:20%}
 
-    html { scroll-behavior: smooth; }
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 1.2rem;transition:.3s ease}.nav.scrolled{background:rgba(5,4,3,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{height:58px;display:flex;align-items:center;justify-content:space-between;gap:1rem;width:min(1240px,100%);margin:0 auto}.brand{display:flex;align-items:center;gap:.85rem}.brand img{height:42px;width:auto;filter:drop-shadow(0 10px 22px rgba(0,0,0,.45))}.brand-mark{width:42px;height:42px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:var(--serif);font-size:1.7rem;background:rgba(0,0,0,.25)}.nav-links{display:flex;align-items:center;gap:1.4rem}.nav-links a,.nav-links button{border:0;background:transparent;text-transform:uppercase;letter-spacing:.16em;font-size:.66rem;font-weight:800;color:#d5c7b8;cursor:pointer;transition:.2s}.nav-links a:hover,.nav-links button:hover{color:var(--gold2)}.hamburger{display:none;width:48px;height:48px;border:1px solid var(--line);border-radius:50%;background:rgba(0,0,0,.3);cursor:pointer}.hamburger span{display:block;width:18px;height:2px;background:var(--cream);margin:4px auto;transition:.2s}.hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}.drawer{position:fixed;inset:0;z-index:900;background:rgba(5,4,3,.96);backdrop-filter:blur(20px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.25s}.drawer.open{opacity:1;pointer-events:auto}.drawer-menu{display:flex;flex-direction:column;gap:1rem;text-align:center}.drawer-menu button,.drawer-menu a{background:transparent;border:0;color:var(--cream);font-family:var(--serif);font-size:clamp(2.3rem,9vw,5rem);line-height:.95;cursor:pointer}.drawer-menu button:hover,.drawer-menu a:hover{color:var(--gold2)}
 
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    .hero{position:relative;min-height:100svh;display:grid;place-items:end center;padding:140px 0 70px;overflow:hidden}.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.08);transform:scale(1.04)}.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.33),rgba(0,0,0,.72)),linear-gradient(0deg,#050403 0%,rgba(5,4,3,.12) 45%,rgba(5,4,3,.55) 100%)}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;align-items:end;gap:2rem}.hero h1{font-family:var(--serif);font-size:clamp(4.6rem,12vw,11.5rem);line-height:.78;font-weight:300;letter-spacing:-.07em;text-wrap:balance}.hero h1 em{font-style:italic;color:var(--gold2);font-weight:300}.hero-text{max-width:560px}.hero-text p{font-size:clamp(1rem,2vw,1.3rem);color:#dacfc2;margin:1.5rem 0 1.6rem}.hero-actions{display:flex;gap:.85rem;flex-wrap:wrap}.hero-card{justify-self:end;max-width:390px;padding:1.1rem;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:28px}.hero-card img{height:260px;width:100%;object-fit:cover;border-radius:21px;filter:saturate(.9)}.hero-card-row{display:flex;justify-content:space-between;gap:1rem;padding:1rem .3rem .1rem}.hero-card h3{font-family:var(--serif);font-size:1.55rem;font-weight:400}.hero-card p{font-size:.8rem;color:var(--muted)}.ticker{position:absolute;bottom:0;left:0;right:0;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.38);backdrop-filter:blur(14px);overflow:hidden}.ticker-track{display:flex;width:max-content;animation:marquee 30s linear infinite}.ticker span{padding:.75rem 1.4rem;text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;color:#ddcabb;white-space:nowrap}.ticker b{color:var(--gold2)}@keyframes marquee{to{transform:translateX(-50%)}}
 
-    ::selection { background: var(--gold); color: #fff; }
+    .hours{padding:5rem 0 2.5rem}.hours-grid{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden}.hours-card{background:rgba(18,13,9,.86);padding:1.4rem;min-height:150px}.hours-card.feature{background:linear-gradient(135deg,rgba(201,133,61,.18),rgba(50,17,14,.55));display:flex;flex-direction:column;justify-content:space-between}.hours-card h3{font-family:var(--serif);font-weight:400;font-size:1.55rem}.hours-card p{color:var(--muted);font-size:.86rem;margin-top:.55rem}.hours-card strong{display:block;color:var(--cream);font-size:.9rem;margin-top:.75rem}
 
-    img { display: block; max-width: 100%; }
+    section{position:relative}.split{padding:6rem 0}.split-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:center}.portrait-stack{position:relative;min-height:560px}.photo-a,.photo-b{position:absolute;border-radius:30px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}.photo-a{inset:0 18% 10% 0}.photo-b{right:0;bottom:0;width:45%;height:52%}.photo-a img,.photo-b img{width:100%;height:100%;object-fit:cover}.story-copy p{color:var(--muted);margin-top:1rem}.badge-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}.badge{border:1px solid var(--line);border-radius:999px;padding:.55rem .8rem;color:#d5c7b8;font-size:.72rem;background:rgba(255,255,255,.04)}
 
-    a { color: inherit; text-decoration: none; }
+    .menu-section{padding:7rem 0;background:radial-gradient(circle at 50% 0%,rgba(201,133,61,.10),transparent 40%),#070504;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.menu-top{display:flex;justify-content:space-between;gap:2rem;align-items:end;margin-bottom:2rem}.menu-controls{display:grid;grid-template-columns:1fr auto;gap:.9rem;margin-bottom:1.2rem}.search{width:100%;padding:1rem 1.2rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--cream);outline:none}.search:focus{border-color:var(--line2)}.tabs,.filters{display:flex;gap:.6rem;flex-wrap:wrap}.tab,.filter{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);padding:.75rem 1rem;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;font-weight:800;color:#cdbfb1;cursor:pointer;transition:.2s}.tab.active,.filter.active{background:rgba(201,133,61,.22);border-color:var(--line2);color:var(--gold2)}.menu-layout{display:grid;grid-template-columns:1fr 340px;gap:1.2rem}.menu-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.menu-card{position:relative;min-height:175px;border:1px solid var(--line);border-radius:26px;padding:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));overflow:hidden;transition:.25s}.menu-card:before{content:"";position:absolute;inset:auto -50px -70px auto;width:160px;height:160px;border-radius:50%;background:rgba(201,133,61,.12);filter:blur(10px);transition:.25s}.menu-card:hover{transform:translateY(-4px);border-color:var(--line2);background:linear-gradient(180deg,rgba(201,133,61,.12),rgba(255,255,255,.03))}.menu-card h3{font-family:var(--serif);font-size:1.55rem;font-weight:400;line-height:1.1}.menu-card p{color:var(--muted);font-size:.86rem;margin:.65rem 0 1rem}.tag-row{display:flex;gap:.4rem;flex-wrap:wrap}.tag{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:#d0ba9e;border:1px solid rgba(201,133,61,.25);border-radius:999px;padding:.32rem .5rem;background:rgba(201,133,61,.08)}.menu-side{position:sticky;top:104px;align-self:start;border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));padding:1rem;overflow:hidden}.menu-side img{height:250px;width:100%;object-fit:cover;border-radius:24px}.menu-side h3{font-family:var(--serif);font-size:2rem;font-weight:400;margin:1rem 0 .3rem}.menu-side p{color:var(--muted);font-size:.9rem}.pairing{margin-top:1rem;padding:1rem;border:1px solid var(--line);border-radius:20px;background:rgba(0,0,0,.2)}.pairing b{color:var(--gold2);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.empty{grid-column:1/-1;border:1px solid var(--line);border-radius:24px;padding:2rem;text-align:center;color:var(--muted)}
 
-    /* ---- SCROLLBAR HIDE ---- */
-    .hide-scroll { scrollbar-width: none; -ms-overflow-style: none; }
-    .hide-scroll::-webkit-scrollbar { display: none; }
+    .gallery{padding:6rem 0}.gallery-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}.rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem}.rail::-webkit-scrollbar{height:7px}.rail::-webkit-scrollbar-thumb{background:rgba(201,133,61,.4);border-radius:99px}.dish{scroll-snap-align:start;min-width:min(410px,82vw);height:520px;border:1px solid var(--line);border-radius:32px;overflow:hidden;position:relative;background:#111}.dish img{width:100%;height:100%;object-fit:cover;transition:.6s;filter:saturate(.92)}.dish:hover img{transform:scale(1.05)}.dish:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 56%)}.dish h3{position:absolute;left:1.3rem;bottom:1.25rem;z-index:1;font-family:var(--serif);font-size:2rem;font-weight:400}.dish span{position:absolute;left:1.3rem;bottom:4rem;z-index:1;color:var(--gold2);text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;font-weight:800}
 
-    /* ---- UTILITY ---- */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .serif { font-family: var(--font-serif); font-weight: 400; }
-    .gold { color: var(--gold); }
-    .muted { color: var(--muted); }
-    .upper { text-transform: uppercase; letter-spacing: 0.12em; }
+    .vault{padding:7rem 0;background:linear-gradient(180deg,#050403,#0b0705)}.vault-card{position:relative;min-height:590px;border-radius:38px;overflow:hidden;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:2rem}.vault-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)}.vault-card:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(0,0,0,.28),rgba(0,0,0,.86))}.vault-content{position:relative;z-index:1;max-width:760px}.vault-content h2{font-family:var(--serif);font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:.85;letter-spacing:-.06em}.vault-content p{color:#d6c7b6;margin:1.2rem auto 1.8rem;max-width:620px}.event-card{margin-top:1.2rem;border:1px solid var(--line2);background:rgba(0,0,0,.38);backdrop-filter:blur(16px);border-radius:24px;padding:1rem;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center}.datebox{width:78px;height:78px;border-radius:18px;background:rgba(201,133,61,.18);display:grid;place-items:center;color:var(--gold2);font-weight:800;text-align:center;line-height:1.05}.event-card h3{font-family:var(--serif);font-size:1.55rem;font-weight:400}.event-card p{margin:.2rem 0 0;font-size:.85rem;color:var(--muted)}
 
-    /* ---- BUTTONS ---- */
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2.5rem;
-      font-family: var(--font-sans);
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .btn-gold { background: var(--gold); color: #fff; }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.06); }
-    .btn-outline-gold {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-    .btn-outline-gold:hover { background: var(--gold); color: #fff; }
-    .btn-white { background: #fff; color: #000; }
-    .btn-white:hover { background: #e8e8e8; }
+    .chef{padding:6rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#070504}.chef-grid{display:grid;grid-template-columns:310px 1fr;gap:3rem;align-items:center;max-width:950px;margin:0 auto}.chef-photo{width:260px;height:260px;border-radius:50%;overflow:hidden;border:1px solid var(--line2);box-shadow:var(--shadow)}.chef-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.8);transition:.3s}.chef-photo:hover img{filter:grayscale(0)}.chef p{color:var(--muted);margin-top:1rem}
 
-    /* ==================================================
-       NAV
-    ================================================== */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.75rem 1.5rem;
-      transition: background 0.5s ease, padding 0.4s ease, border-color 0.5s ease;
-      border-bottom: 1px solid transparent;
-    }
-    nav.scrolled {
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 1.1rem 1.5rem;
-      border-bottom-color: var(--border);
-    }
-    .nav-logo { cursor: pointer; }
-    .nav-logo img { height: 2.4rem; width: auto; opacity: 0.9; transition: opacity 0.2s; }
-    .nav-logo img:hover { opacity: 1; }
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
-    .nav-links a, .nav-links button {
-      background: none;
-      border: none;
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links button:hover { color: var(--gold); }
-    .nav-reserve { background: var(--gold); color: #fff; padding: 0.6rem 1.5rem; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; transition: background 0.2s; border: none; cursor: pointer; font-family: var(--font-sans); }
-    .nav-reserve:hover { background: var(--gold-light); }
+    .contact{padding:6rem 0 2rem}.contact-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:2rem}.footer-card{border:1px solid var(--line);border-radius:30px;padding:1.5rem;background:rgba(255,255,255,.035)}.footer-card img{height:48px;margin-bottom:1rem}.footer-card h3{font-family:var(--serif);font-size:1.55rem;font-weight:400;margin-bottom:.9rem}.footer-card p,.footer-card a{color:var(--muted);font-size:.9rem}.footer-card a:hover{color:var(--gold2)}.footer-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem}.bottom{margin-top:3rem;border-top:1px solid var(--line);padding-top:1.4rem;color:var(--soft);font-size:.76rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.mobile-reserve{display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:1100}.mobile-reserve .btn{width:100%;box-shadow:0 18px 55px rgba(0,0,0,.5)}
 
-    /* Mobile hamburger */
-    .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--white); padding: 0.25rem; }
-    .hamburger svg { display: block; }
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
 
-    /* Mobile overlay */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99;
-      background: rgba(0,0,0,0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu button {
-      background: none;
-      border: none;
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: var(--white);
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .mobile-menu button:hover { color: var(--gold); }
-
-    /* ==================================================
-       HERO
-    ================================================== */
-    #hero {
-      position: relative;
-      height: 100vh;
-      min-height: 640px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .hero-bg img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.25) 100%);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 0 1.5rem;
-      max-width: 900px;
-      margin-top: 5rem;
-      animation: fadeUp 1s ease both;
-    }
-    .hero-content h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: #fff;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-    .hero-content p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.7);
-      font-weight: 300;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
-    }
-    .hero-ctas { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==================================================
-       ABOUT
-    ================================================== */
-    #about {
-      background: var(--black);
-      padding: 7rem 0;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-text h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 2rem;
-      line-height: 1.2;
-    }
-    .about-text p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-      line-height: 1.8;
-    }
-    .about-photo {
-      position: relative;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-    }
-    .about-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.82;
-      transition: opacity 0.5s, transform 0.8s;
-    }
-    .about-photo:hover img { opacity: 1; transform: scale(1.03); }
-    .about-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.09);
-    }
-
-    /* reveal animation */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal-left.visible { opacity: 1; transform: none; }
-    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal-right.visible { opacity: 1; transform: none; }
-
-    /* ==================================================
-       MENU
-    ================================================== */
-    #menu {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 7rem 0;
-    }
-    .menu-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .menu-header h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 2rem;
-    }
-    .menu-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-    .menu-tab {
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      padding: 0.75rem 2rem;
-      font-family: var(--font-sans);
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      cursor: pointer;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .menu-tab:hover { color: #fff; }
-    .menu-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-    .menu-panel { display: none; }
-    .menu-panel.active {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem 5rem;
-      animation: fadePanel 0.4s ease both;
-    }
-    @keyframes fadePanel { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-
-    .menu-category h3 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #fff;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.9rem;
-      margin-bottom: 1.5rem;
-    }
-    .menu-items { display: flex; flex-direction: column; gap: 1.25rem; }
-    .menu-item {}
-    .menu-item-name {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: #ddd;
-      margin-bottom: 0.2rem;
-      transition: color 0.2s;
-    }
-    .menu-item:hover .menu-item-name { color: var(--gold); }
-    .menu-item-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 300;
-      line-height: 1.5;
-    }
-    .menu-note {
-      margin-top: 3.5rem;
-      text-align: center;
-      font-size: 0.72rem;
-      color: var(--muted);
-      line-height: 1.7;
-      grid-column: 1 / -1;
-    }
-    .menu-note-standalone {
-      margin-top: 3.5rem;
-      text-align: center;
-      font-size: 0.72rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* Family style tiers */
-    .tier-card {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .tier-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .tier-card .tier-row { display: flex; gap: 0.75rem; margin-top: 0.9rem; flex-wrap: wrap; }
-    .tier-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 500; width: 80px; flex-shrink: 0; padding-top: 0.1rem; }
-    .tier-items { font-size: 0.82rem; color: #aaa; line-height: 1.6; }
-    .family-full { grid-column: 1 / -1; }
-
-    /* ==================================================
-       DISHES
-    ================================================== */
-    #dishes {
-      background: var(--black);
-      padding: 7rem 0 0;
-      overflow: hidden;
-    }
-    #dishes .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 2.5rem;
-    }
-    .dishes-scroll {
-      display: flex;
-      gap: 1.25rem;
-      padding: 0 1.5rem 3.5rem;
-      overflow-x: auto;
-    }
-    .dish-card {
-      position: relative;
-      min-width: 280px;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: var(--black-card);
-      cursor: default;
-    }
-    @media (min-width: 768px) { .dish-card { min-width: 380px; } }
-    .dish-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-      transition: opacity 0.6s ease, transform 0.8s ease;
-    }
-    .dish-card:hover img { opacity: 1; transform: scale(1.05); }
-    .dish-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
-    }
-    .dish-card-name {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #fff;
-    }
-
-    /* ==================================================
-       BAR
-    ================================================== */
-    #bar {
-      position: relative;
-      padding: 8rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 600px;
-    }
-    .bar-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .bar-bg img { width: 100%; height: 100%; object-fit: cover; }
-    .bar-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.72);
-    }
-    .bar-content {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      padding: 0 1.5rem;
-    }
-    .bar-content h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .bar-content p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.65);
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-
-    /* ==================================================
-       PRIVATE EVENTS
-    ================================================== */
-    #private-events {
-      background: var(--black);
-      padding: 7rem 0;
-    }
-    .events-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .events-photo {
-      position: relative;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      order: 1;
-    }
-    .events-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.82;
-      transition: transform 0.8s ease;
-    }
-    .events-photo:hover img { transform: scale(1.03); }
-    .events-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.09);
-    }
-    .events-text { order: 2; }
-    .events-text h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .events-text > p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-    .events-tiers { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
-    .events-tier {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      padding: 1.25rem 1.5rem;
-      transition: border-color 0.3s;
-    }
-    .events-tier:hover { border-color: rgba(200,131,58,0.35); }
-    .events-tier h3 {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .events-tier p { font-size: 0.8rem; color: #888; line-height: 1.6; }
-
-    /* ==================================================
-       CHEF
-    ================================================== */
-    #chef {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 7rem 0;
-    }
-    .chef-inner {
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .chef-portrait {
-      width: 220px; height: 220px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      transition: border-color 0.4s;
-    }
-    .chef-portrait:hover { border-color: var(--gold); }
-    .chef-portrait img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(1);
-      transition: filter 0.5s;
-    }
-    .chef-portrait:hover img { filter: grayscale(0); }
-    .chef-bio h2 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 0.3rem;
-    }
-    .chef-bio .chef-name {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-    .chef-bio p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
-
-    /* ==================================================
-       CONTACT / FOOTER
-    ================================================== */
-    #contact {
-      background: var(--black);
-      padding: 7rem 0 4rem;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 5rem;
-    }
-    .contact-brand img { height: 2.8rem; opacity: 0.9; margin-bottom: 1.5rem; }
-    .contact-brand p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; max-width: 260px; }
-    .contact-info h3, .contact-reserve h3 {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .contact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      margin-bottom: 1.25rem;
-    }
-    .contact-row svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--gold); }
-    .contact-row p, .contact-row a { font-size: 0.85rem; color: #bbb; line-height: 1.6; }
-    .contact-row a:hover { color: var(--white); }
-    .contact-reserve p { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
-    .social-row { display: flex; gap: 0.75rem; margin-top: 2rem; }
-    .social-btn {
-      width: 2.4rem; height: 2.4rem;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: #888;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .social-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
-    .footer-bar {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-    .footer-bar a { transition: color 0.2s; }
-    .footer-bar a:hover { color: var(--white); }
-    .footer-links { display: flex; gap: 1.5rem; }
-
-    /* ==================================================
-       RESPONSIVE
-    ================================================== */
-    @media (max-width: 900px) {
-      .about-grid, .events-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .events-photo { order: 1; aspect-ratio: 16/9; }
-      .events-text { order: 2; }
-      .chef-inner { flex-direction: column; text-align: center; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .menu-panel.active { grid-template-columns: 1fr; gap: 2.5rem; }
-      .family-full { grid-column: auto; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-      #hero .hero-content h1 { font-size: 2.8rem; }
-      .hero-ctas { flex-direction: column; align-items: center; }
-      .hero-ctas .btn { width: 100%; max-width: 300px; text-align: center; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-photo { aspect-ratio: 4/3; }
-      .chef-portrait { width: 160px; height: 160px; }
-    }
+    @media(max-width:980px){.nav-links{display:none}.hamburger{display:block}.hero-grid,.split-grid,.chef-grid,.contact-grid{grid-template-columns:1fr}.hero-card{justify-self:start}.hours-grid{grid-template-columns:1fr 1fr}.hours-card.feature{grid-column:1/-1}.menu-top{display:block}.menu-layout{grid-template-columns:1fr}.menu-side{position:relative;top:auto}.portrait-stack{min-height:460px}.mobile-reserve{display:block}.contact{padding-bottom:6rem}}
+    @media(max-width:700px){.hero{align-items:center;padding-top:120px}.hero-card{display:none}.hero h1{font-size:clamp(4rem,20vw,7rem)}.hero-actions .btn{width:100%}.hours-grid,.menu-board{grid-template-columns:1fr}.menu-controls{grid-template-columns:1fr}.tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:.3rem}.tab{white-space:nowrap}.photo-a{inset:0 0 18% 0}.photo-b{width:62%;height:42%}.section-title{font-size:clamp(2.7rem,14vw,4.2rem)}.event-card{grid-template-columns:1fr;text-align:center}.datebox{margin:auto}.chef-photo{width:210px;height:210px}.brand img{height:34px}}
   </style>
 </head>
 <body>
+  <div class="grain"></div>
 
-  <!-- ===================== NAV ===================== -->
-  <nav id="navbar">
-    <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      <!-- SWAP: Replace logo.png path if you rename your logo file -->
-      <img src="./images/logo.png" alt="Gaskins on Emma" />
-    </div>
-    <div class="nav-links">
-      <button onclick="scrollTo('menu')">Menu</button>
-      <button onclick="scrollTo('about')">About</button>
-      <button onclick="scrollTo('bar')">Bar</button>
-      <button onclick="scrollTo('private-events')">Private Events</button>
-      <button onclick="scrollTo('contact')">Contact</button>
-      <!-- SWAP: Replace href with your actual OpenTable link or tel: link -->
-      <a href="https://www.opentable.com/gaskins-on-emma" target="_blank" rel="noreferrer">
-        <button class="nav-reserve">Reserve</button>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Gaskins on Emma home">
+        <img src="./images/logo.png" alt="Gaskins on Emma" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+        <span class="brand-mark" style="display:none">G</span>
       </a>
+      <div class="nav-links">
+        <button data-jump="menu">Menus</button>
+        <button data-jump="hours">Hours</button>
+        <button data-jump="story">About</button>
+        <button data-jump="vault">Wine & Bar</button>
+        <button data-jump="contact">Find Us</button>
+        <a class="btn btn-primary" href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Reserve</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation"><span></span><span></span><span></span></button>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button onclick="mobileNav('menu')">Menu</button>
-    <button onclick="mobileNav('about')">About</button>
-    <button onclick="mobileNav('bar')">Bar</button>
-    <button onclick="mobileNav('private-events')">Private Events</button>
-    <button onclick="mobileNav('contact')">Contact</button>
+  <div class="drawer" id="drawer">
+    <div class="drawer-menu">
+      <button data-jump="menu">Menus</button>
+      <button data-jump="hours">Hours</button>
+      <button data-jump="story">About</button>
+      <button data-jump="vault">Wine & Bar</button>
+      <button data-jump="contact">Find Us</button>
+      <a href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Reserve</a>
+    </div>
   </div>
 
-  <!-- ===================== HERO ===================== -->
-  <section id="hero">
-    <div class="hero-bg">
-      <!-- SWAP: hero.jpg = table-spread photo -->
-      <img src="./images/hero.jpg" alt="Gaskins on Emma — Table Spread" />
+  <header class="hero" id="top">
+    <div class="hero-bg"><img src="./images/hero.jpg" alt="A table spread at Gaskins on Emma" /></div>
+    <div class="glow one"></div><div class="glow two"></div>
+    <div class="container hero-grid reveal">
+      <div class="hero-text">
+        <div class="eyebrow">Downtown Springdale · Modern American Steakhouse</div>
+        <h1>Prime rib.<br><em>Low light.</em><br>Long nights.</h1>
+        <p>Signature steaks, world-famous mushroom soup, a serious bar program, and the kind of dining room that turns a normal night into a reservation worth remembering.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Book on Resy</a>
+          <button class="btn btn-dark" data-jump="menu">Explore the Menu</button>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <img src="./images/steak.jpg" alt="Steak at Gaskins on Emma" />
+        <div class="hero-card-row">
+          <div><h3>Tonight’s move</h3><p>Start with oysters. Stay for prime rib.</p></div>
+          <span class="eyebrow">Dinner</span>
+        </div>
+      </aside>
     </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>A Modern American<br/>Steakhouse</h1>
-      <p>Precise cooking, bold flavors, and an atmosphere that makes you feel like you're getting away with something.</p>
-      <div class="hero-ctas">
-        <!-- SWAP: Replace with your OpenTable link or tel:+14797172115 -->
-        <a href="https://www.opentable.com/gaskins-on-emma" target="_blank" rel="noreferrer" class="btn btn-gold">Reserve a Table</a>
-        <button class="btn btn-outline" onclick="scrollTo('menu')">Explore Menu</button>
+    <div class="ticker"><div class="ticker-track">
+      <span><b>Walk-ins welcome</b></span><span>Call ahead for parties of 7+</span><span><b>Lunch Tue–Fri</b></span><span>Dinner Tue–Sat</span><span><b>Bar opens at 4</b></span><span>Downtown Springdale</span>
+      <span><b>Walk-ins welcome</b></span><span>Call ahead for parties of 7+</span><span><b>Lunch Tue–Fri</b></span><span>Dinner Tue–Sat</span><span><b>Bar opens at 4</b></span><span>Downtown Springdale</span>
+    </div></div>
+  </header>
+
+  <section class="hours" id="hours">
+    <div class="container hours-grid reveal">
+      <div class="hours-card feature"><div><div class="eyebrow">Hours</div><h3>Walk-ins welcome. Reservations recommended.</h3></div><p>Call ahead for parties of 7 or more.</p></div>
+      <div class="hours-card"><h3>Lunch</h3><strong>Tue–Fri · 11 AM–2 PM</strong><p>Dining room and lounge.</p></div>
+      <div class="hours-card"><h3>Lounge & Bar</h3><strong>Tue–Sat · 4–9 PM</strong><p>Bar snacks served in the lounge and bar.</p></div>
+      <div class="hours-card"><h3>Dinner</h3><strong>Tue–Sat · 5–9 PM</strong><p>Full dinner service.</p></div>
+      <div class="hours-card"><h3>Closed</h3><strong>Sunday & Monday</strong><p>Back at it Tuesday.</p></div>
+    </div>
+  </section>
+
+  <section class="split" id="story">
+    <div class="container split-grid">
+      <div class="portrait-stack reveal">
+        <div class="photo-a"><img src="./images/dining.jpg" alt="Gaskins dining room" /></div>
+        <div class="photo-b"><img src="./images/entry.jpg" alt="Gaskins entry lights" /></div>
+      </div>
+      <div class="story-copy reveal">
+        <div class="eyebrow">The Room</div>
+        <h2 class="section-title">Old-school steakhouse soul. Downtown edge.</h2>
+        <p>Lisa Provencio-Jones and Bert Jones brought the spirit of Gaskins Cabin Steakhouse to Emma Avenue, pairing signature prime rib, char-grilled steaks, fresh fish, poultry, pasta, and a polished lounge experience.</p>
+        <p>The result feels timeless instead of trendy: low golden light, a serious bar, and a room built for date nights, celebrations, work dinners, and “we should have done this sooner” evenings.</p>
+        <div class="badge-row"><span class="badge">Prime Rib</span><span class="badge">Char-Grilled Steaks</span><span class="badge">Mushroom Soup</span><span class="badge">Wine Cellar</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about">
+  <section class="menu-section" id="menu">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text reveal-left">
-          <h2>The dining room you didn't know you needed.</h2>
-          <p>Gaskins on Emma brings dark, sophisticated energy to downtown Springdale. Everything here feels deliberate — from the black marble countertops to the warm amber pools of light cast by our pendant fixtures.</p>
-          <p>Our kitchen focuses on craft cooking and seasonal ingredients, delivering familiar American steakhouse classics with unexpected precision and bold, memorable flavors.</p>
-          <p>Whether it's a Tuesday evening cocktail or a milestone celebration, our dining room is built to be permanent. Not trendy. Just exactly what you want it to be.</p>
-        </div>
-        <div class="about-photo reveal-right">
-          <!-- SWAP: dining.jpg = dining room photo -->
-          <img src="./images/dining.jpg" alt="Gaskins Dining Room" />
-        </div>
+      <div class="menu-top reveal">
+        <div><div class="eyebrow">Interactive Menu</div><h2 class="section-title">Find your table.</h2></div>
+        <p class="section-copy">Search, filter, or jump between lunch, dinner, family style, cocktails, and wine. This is the part that should feel way more alive than a normal restaurant menu.</p>
+      </div>
+      <div class="tabs reveal" id="tabs"></div>
+      <div class="menu-controls reveal">
+        <input class="search" id="search" placeholder="Search steak, oysters, salmon, vegetarian, wine..." />
+        <button class="btn" id="clearBtn">Clear</button>
+      </div>
+      <div class="filters reveal" id="filters"></div>
+      <div class="menu-layout">
+        <div class="menu-board reveal" id="menuBoard"></div>
+        <aside class="menu-side reveal">
+          <img id="featureImg" src="./images/filet.jpg" alt="Featured menu item" />
+          <h3 id="featureTitle">Chef’s pick</h3>
+          <p id="featureDesc">Tap any menu item to spotlight it here with a pairing idea.</p>
+          <div class="pairing"><b>Perfect with</b><p id="featurePair">A booth, a low light, and something from the cellar.</p></div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- ===================== MENU ===================== -->
-  <section id="menu">
-    <div class="container" style="max-width:1100px">
-      <div class="menu-header reveal">
-        <h2>Our Menus</h2>
-        <div class="menu-tabs" role="tablist">
-          <button class="menu-tab" data-tab="lunch" role="tab">Lunch</button>
-          <button class="menu-tab active" data-tab="dinner" role="tab">Dinner</button>
-          <button class="menu-tab" data-tab="family" role="tab">Family Style</button>
-        </div>
-      </div>
-
-      <!-- LUNCH -->
-      <div class="menu-panel" id="tab-lunch">
-        <div class="menu-category">
-          <h3>For the Table</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Pimento Cheese</div><div class="menu-item-desc">aged cheddar, roasted peppers, naan</div></div>
-            <div class="menu-item"><div class="menu-item-name">Cheese Fries</div><div class="menu-item-desc">house cheese blend, garlic aioli, bacon, chives</div></div>
-            <div class="menu-item"><div class="menu-item-name">Housemade Hummus</div><div class="menu-item-desc">spiced chickpeas, olive oil</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Soup &amp; Salad</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">House Salad</div><div class="menu-item-desc">sherry vinaigrette, tomato, onion</div></div>
-            <div class="menu-item"><div class="menu-item-name">Wedge Salad</div><div class="menu-item-desc">bleu cheese, bacon, tomato, chives</div></div>
-            <div class="menu-item"><div class="menu-item-name">Caesar Salad*</div><div class="menu-item-desc">gem lettuce, crouton crumble, parmesan</div></div>
-            <div class="menu-item"><div class="menu-item-name">Burgundy Mushroom Soup</div><div class="menu-item-desc">Cup | Bowl</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Focaccia Melts</h3>
-          <p class="menu-item-desc" style="margin-bottom:1.25rem;font-size:0.78rem;">Served with house fries and a drink (iced tea, sweet tea or fountain soda)</p>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Grilled Cheese</div><div class="menu-item-desc">mozzarella &amp; cheddar</div></div>
-            <div class="menu-item"><div class="menu-item-name">Braised Chicken</div><div class="menu-item-desc">white cheddar, bacon jam, garlic aioli</div></div>
-            <div class="menu-item"><div class="menu-item-name">Prime Rib</div><div class="menu-item-desc">mozzarella, horseradish cream, au jus</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Burgers</h3>
-          <p class="menu-item-desc" style="margin-bottom:1.25rem;font-size:0.78rem;">Served with house fries and a drink (iced tea, sweet tea or fountain soda)</p>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Gaskins Smash Burger*</div><div class="menu-item-desc">shallot jam, pickles, white cheddar</div></div>
-            <div class="menu-item"><div class="menu-item-name">Spicy Burger*</div><div class="menu-item-desc">pickled jalapeño, calabrian aioli, cheddar</div></div>
-            <div class="menu-item"><div class="menu-item-name">BLT Burger*</div><div class="menu-item-desc">bacon jam, marinated tomato, cheddar, lettuce, garlic aioli</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Rice Bowls</h3>
-          <p class="menu-item-desc" style="margin-bottom:1.25rem;font-size:0.78rem;">Served with golden rice, cucumber, marinated carrots, pickled onions, spiced chickpeas, garlic aioli and a drink</p>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Braised Chicken</div></div>
-            <div class="menu-item"><div class="menu-item-name">Shrimp</div></div>
-            <div class="menu-item"><div class="menu-item-name">Steak</div></div>
-            <div class="menu-item"><div class="menu-item-name">Roasted Cauliflower</div></div>
-          </div>
-        </div>
-        <div class="menu-note">
-          <p>*Consuming raw or undercooked meat, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
-          <p>Please alert your server if you have any food allergies.</p>
-        </div>
-      </div>
-
-      <!-- DINNER -->
-      <div class="menu-panel active" id="tab-dinner">
-        <div class="menu-category">
-          <h3>Cold Bites</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Cheese Trio</div><div class="menu-item-desc">housemade focaccia, spiced nuts, shallot jam</div></div>
-            <div class="menu-item"><div class="menu-item-name">Deviled Eggs</div><div class="menu-item-desc">smoked trout roe &amp; chives</div></div>
-            <div class="menu-item"><div class="menu-item-name">Ham &amp; Cheese</div><div class="menu-item-desc">housemade focaccia, pimento cheese, prosciutto di parma</div></div>
-            <div class="menu-item"><div class="menu-item-name">Tuna Bombs*</div><div class="menu-item-desc">ahi tuna, yuzu kosho, chives</div></div>
-            <div class="menu-item"><div class="menu-item-name">Cold Water Oysters*</div><div class="menu-item-desc">honeydew, mint, cucumber</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Hot Bites</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Peri Peri Cauliflower</div><div class="menu-item-desc">spiced hazelnuts &amp; herbs | V/GF</div></div>
-            <div class="menu-item"><div class="menu-item-name">Calamari</div><div class="menu-item-desc">pickled pepper relish, arugula, calabrian aioli</div></div>
-            <div class="menu-item"><div class="menu-item-name">Pork Bossam</div><div class="menu-item-desc">braised pork shoulder, lettuce wraps, pickled vegetables</div></div>
-            <div class="menu-item"><div class="menu-item-name">Crispy Pork Belly</div><div class="menu-item-desc">lime, vadouvan cashews, herbs</div></div>
-            <div class="menu-item"><div class="menu-item-name">Roasted Bone Marrow</div><div class="menu-item-desc">shallot jam, pickled slaw, pomme purée</div></div>
-            <div class="menu-item"><div class="menu-item-name">Bread Service</div><div class="menu-item-desc">house made Japanese milk bread</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Soup &amp; Salad</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">House Salad</div><div class="menu-item-desc">sherry vinaigrette, marinated tomato, onion | V</div></div>
-            <div class="menu-item"><div class="menu-item-name">Caesar Salad*</div><div class="menu-item-desc">gem lettuce, garlic crumble, parmesan</div></div>
-            <div class="menu-item"><div class="menu-item-name">Wedge Salad</div><div class="menu-item-desc">bleu cheese, bacon, marinated tomato, chives</div></div>
-            <div class="menu-item"><div class="menu-item-name">Burgundy Mushroom Soup</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Supper Time</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Crispy Cauliflower</div><div class="menu-item-desc">carrot purée, roasted cabbage, braised cippolinis | V/GF</div></div>
-            <div class="menu-item"><div class="menu-item-name">BBQ Shrimp &amp; Grits</div><div class="menu-item-desc">Arkansas rice grits, marinated tomatoes, chipotle beurre blanc</div></div>
-            <div class="menu-item"><div class="menu-item-name">Crab Cakes</div><div class="menu-item-desc">grilled focaccia &amp; spring greens</div></div>
-            <div class="menu-item"><div class="menu-item-name">Crispy Skin Salmon</div><div class="menu-item-desc">soubise &amp; spring vegetables | GF</div></div>
-            <div class="menu-item"><div class="menu-item-name">Gaskins Fried Chicken</div><div class="menu-item-desc">jalapeño corn bread, rosemary velouté, local honey</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Off the Grill</h3>
-          <p class="menu-item-desc" style="margin-bottom:1.25rem;font-size:0.78rem;">Served with a potato pavé</p>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Duroc Pork Chop*</div><div class="menu-item-desc">12 oz.</div></div>
-            <div class="menu-item"><div class="menu-item-name">Filet*</div><div class="menu-item-desc">8 oz.</div></div>
-            <div class="menu-item"><div class="menu-item-name">New York Strip*</div><div class="menu-item-desc">14 oz.</div></div>
-            <div class="menu-item"><div class="menu-item-name">Ribeye*</div><div class="menu-item-desc">14 oz.</div></div>
-            <div class="menu-item"><div class="menu-item-name">Prime Rib*</div><div class="menu-item-desc">14 oz.</div></div>
-          </div>
-        </div>
-        <div class="menu-category">
-          <h3>Pass the Plate</h3>
-          <div class="menu-items">
-            <div class="menu-item"><div class="menu-item-name">Mushrooms</div><div class="menu-item-desc">thyme, shallot, house butter | GF</div></div>
-            <div class="menu-item"><div class="menu-item-name">Broccolini</div><div class="menu-item-desc">curried labneh &amp; toasted hazelnuts | V/GF</div></div>
-            <div class="menu-item"><div class="menu-item-name">Brussels Sprouts</div><div class="menu-item-desc">aleppo pepper &amp; fennel pollen | V</div></div>
-            <div class="menu-item"><div class="menu-item-name">Mac &amp; Cheese</div><div class="menu-item-desc">mornay &amp; gremolata crumble | V</div></div>
-            <div class="menu-item"><div class="menu-item-name">Asparagus</div><div class="menu-item-desc">parmesan &amp; fine herbs</div></div>
-            <div class="menu-item"><div class="menu-item-name">Smoked Carrots</div><div class="menu-item-desc">hummus, herbs, cashews</div></div>
-            <div class="menu-item"><div class="menu-item-name">Pomme Frites</div><div class="menu-item-desc">sea salt &amp; herbs | V</div></div>
-            <div class="menu-item"><div class="menu-item-name">Baked Potato</div><div class="menu-item-desc">salted "all the way" | V/GF</div></div>
-          </div>
-        </div>
-        <div class="menu-note">
-          <p>*Consuming raw or undercooked meat, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
-          <p>Please alert your server if you have any food allergies.</p>
-        </div>
-      </div>
-
-      <!-- FAMILY STYLE -->
-      <div class="menu-panel" id="tab-family">
-        <div class="family-full" style="grid-column:1/-1">
-          <div class="tier-card">
-            <h3>Tier 1 — $55 per guest</h3>
-            <div class="tier-row"><span class="tier-label">Starters</span><span class="tier-items">Caesar Salad, Wedge Salad, Peri Peri Cauliflower (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Entrees</span><span class="tier-items">Pan Seared Salmon, Roasted Chicken (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Sides</span><span class="tier-items">Mac &amp; Cheese, Pomme Frites, Brussels Sprouts (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Desserts</span><span class="tier-items">Seasonal Cheese Cake, Chocolate Bread Pudding (shared per table)</span></div>
-          </div>
-          <div class="tier-card">
-            <h3>Tier 2 — $85 per guest</h3>
-            <div class="tier-row"><span class="tier-label">Starters</span><span class="tier-items">Caesar Salad, Wedge Salad, Peri Peri Cauliflower, Ham &amp; Cheese (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Entrees</span><span class="tier-items">Pan Seared Salmon, Roasted Chicken, NY Strip (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Sides</span><span class="tier-items">Mac &amp; Cheese, Pomme Frites, Brussels Sprouts, Broccolini (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Desserts</span><span class="tier-items">Seasonal Cheese Cake, Chocolate Bread Pudding (shared per table)</span></div>
-          </div>
-          <div class="tier-card">
-            <h3>Tier 3 — $125 per guest</h3>
-            <div class="tier-row"><span class="tier-label">Starters</span><span class="tier-items">Caesar Salad, Wedge Salad, Peri Peri Cauliflower, Ham &amp; Cheese, Calamari, Japanese Milk Bread (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Entrees</span><span class="tier-items">Pan Seared Salmon, Roasted Chicken, NY Strip, Filet Mignon (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Sides</span><span class="tier-items">Mac &amp; Cheese, Pomme Frites, Brussels Sprouts, Broccolini, Mushrooms (shared per table)</span></div>
-            <div class="tier-row"><span class="tier-label">Desserts</span><span class="tier-items">Seasonal Cheese Cake, Chocolate Bread Pudding, Crème Brûlée (shared per table)</span></div>
-          </div>
-          <div class="menu-note-standalone">
-            <p>*Consuming raw or undercooked meat, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
-            <p>Please alert your server if you have any food allergies.</p>
-          </div>
-        </div>
-      </div>
+  <section class="gallery">
+    <div class="container gallery-head reveal">
+      <div><div class="eyebrow">From the Kitchen</div><h2 class="section-title">Plates with presence.</h2></div>
+      <button class="btn" data-jump="menu">Open Menu</button>
+    </div>
+    <div class="rail reveal" aria-label="Dish photo gallery">
+      <article class="dish"><img src="./images/oysters.jpg" alt="Oysters"><span>Cold Bite</span><h3>Cold Water Oysters</h3></article>
+      <article class="dish"><img src="./images/steak.jpg" alt="Steak"><span>Off the Grill</span><h3>Steak & Frites</h3></article>
+      <article class="dish"><img src="./images/salmon.jpg" alt="Salmon"><span>Supper Time</span><h3>Crispy Skin Salmon</h3></article>
+      <article class="dish"><img src="./images/filet.jpg" alt="Filet"><span>Signature</span><h3>Filet Mignon</h3></article>
+      <article class="dish"><img src="./images/calamari.jpg" alt="Calamari"><span>Hot Bite</span><h3>Calamari</h3></article>
     </div>
   </section>
 
-  <!-- ===================== DISHES ===================== -->
-  <section id="dishes">
+  <section class="vault" id="vault">
     <div class="container">
-      <h2 class="section-title reveal">From the Kitchen</h2>
-    </div>
-    <div class="dishes-scroll hide-scroll">
-      <!-- SWAP image filenames to match what you upload -->
-      <div class="dish-card">
-        <img src="./images/oysters.jpg" alt="Cold Water Oysters" loading="lazy" />
-        <div class="dish-card-overlay"></div>
-        <div class="dish-card-name">Cold Water Oysters</div>
-      </div>
-      <div class="dish-card">
-        <img src="./images/steak.jpg" alt="Steak &amp; Frites" loading="lazy" />
-        <div class="dish-card-overlay"></div>
-        <div class="dish-card-name">Steak &amp; Frites</div>
-      </div>
-      <div class="dish-card">
-        <img src="./images/salmon.jpg" alt="Crispy Skin Salmon" loading="lazy" />
-        <div class="dish-card-overlay"></div>
-        <div class="dish-card-name">Crispy Skin Salmon</div>
-      </div>
-      <div class="dish-card">
-        <img src="./images/filet.jpg" alt="Filet Mignon" loading="lazy" />
-        <div class="dish-card-overlay"></div>
-        <div class="dish-card-name">Filet Mignon</div>
-      </div>
-      <div class="dish-card">
-        <img src="./images/calamari.jpg" alt="Calamari" loading="lazy" />
-        <div class="dish-card-overlay"></div>
-        <div class="dish-card-name">Calamari</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== BAR ===================== -->
-  <section id="bar">
-    <div class="bar-bg">
-      <!-- SWAP: bar.jpg = marble bar counter interior photo -->
-      <img src="./images/bar.jpg" alt="The Bar at Gaskins on Emma" loading="lazy" />
-    </div>
-    <div class="bar-content reveal">
-      <h2>The Bar</h2>
-      <p>A curated selection of rare whiskies, precision classic cocktails, and an atmosphere built for staying a while.</p>
-      <a href="#menu" onclick="event.preventDefault();showTab('dinner');scrollTo('menu');" class="btn btn-outline-gold">View Cocktail Menu</a>
-    </div>
-  </section>
-
-  <!-- ===================== PRIVATE EVENTS ===================== -->
-  <section id="private-events">
-    <div class="container">
-      <div class="events-grid">
-        <div class="events-photo reveal-left">
-          <!-- SWAP: entry.jpg = golden orb entry photo -->
-          <img src="./images/entry.jpg" alt="Private Events at Gaskins on Emma" loading="lazy" />
-        </div>
-        <div class="events-text reveal-right">
-          <h2>Private Events</h2>
-          <p>Host your next milestone or corporate gathering in our sophisticated dining room. We offer tiered family-style dining options designed to deliver a seamless, memorable experience for your guests.</p>
-          <div class="events-tiers">
-            <div class="events-tier">
-              <h3>Tier 1 — $55 per guest</h3>
-              <p>Essential Gaskins experience with shared starters, entrees, sides, and desserts.</p>
-            </div>
-            <div class="events-tier">
-              <h3>Tier 2 — $85 per guest</h3>
-              <p>Elevated offerings including NY Strip and our signature Ham &amp; Cheese.</p>
-            </div>
-            <div class="events-tier">
-              <h3>Tier 3 — $125 per guest</h3>
-              <p>The ultimate showcase featuring Filet Mignon, Calamari, and Crème Brûlée.</p>
-            </div>
+      <div class="vault-card reveal">
+        <img src="./images/bar.jpg" alt="The bar at Gaskins on Emma" />
+        <div class="vault-content">
+          <div class="eyebrow">Wine · Cocktails · Lounge</div>
+          <h2>The bar has its own gravity.</h2>
+          <p>Make the lounge feel like a destination: cocktail highlights, wine moments, bar snacks, and a feature for the original bank vault turned wine cellar.</p>
+          <button class="btn btn-primary" data-tab-target="cocktails">See Cocktails</button>
+          <button class="btn btn-dark" data-tab-target="wine">See Wine</button>
+          <div class="event-card">
+            <div class="datebox">APR<br>26</div>
+            <div><h3>Chefs’ Night for No Kid Hungry</h3><p>Special event listed on the original site for Sun, Apr 26, 2026 at 5:00 PM.</p></div>
           </div>
-          <!-- SWAP: Update the events email address -->
-          <a href="mailto:events@gaskinsonemma.com" class="btn btn-white">Inquire About Events</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CHEF ===================== -->
-  <section id="chef">
-    <div class="container">
-      <div class="chef-inner reveal">
-        <div class="chef-portrait">
-          <!-- SWAP: chef.jpg = Sam Walker portrait photo -->
-          <img src="./images/chef.jpg" alt="Chef Sam Walker" loading="lazy" />
-        </div>
-        <div class="chef-bio">
-          <h2>Meet the Chef</h2>
-          <div class="chef-name">Sam Walker</div>
-          <p>Chef Sam Walker brings an uncompromising dedication to technique and ingredient sourcing. His approach honors the steakhouse tradition while subtly breaking its rules, resulting in a menu that feels both timeless and urgently modern.</p>
-        </div>
+  <section class="chef">
+    <div class="container chef-grid reveal">
+      <div class="chef-photo"><img src="./images/chef.jpg" alt="Chef portrait" /></div>
+      <div>
+        <div class="eyebrow">Meet the Chef</div>
+        <h2 class="section-title">Built on craft, not shortcuts.</h2>
+        <p>The current code already had a chef section, but this version makes it feel more editorial and premium — less template, more restaurant story.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT / FOOTER ===================== -->
-  <footer id="contact">
+  <footer class="contact" id="contact">
     <div class="container">
       <div class="contact-grid">
-        <div class="contact-brand">
-          <!-- SWAP: logo.png path -->
+        <div class="footer-card">
           <img src="./images/logo.png" alt="Gaskins on Emma" />
-          <p>A dark, sophisticated dining room in Springdale, AR. Not trendy. Permanent.</p>
+          <p>Modern American steakhouse in the heart of Downtown Springdale.</p>
+          <div class="footer-actions"><a class="btn btn-primary" href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Reserve</a><a class="btn" href="tel:+14793347676">Call</a></div>
         </div>
-        <div class="contact-info">
+        <div class="footer-card">
           <h3>Find Us</h3>
-          <!-- SWAP: Update address, phone, and hours if they ever change -->
-          <div class="contact-row">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-            <p>118 W Emma Ave<br/>Springdale, AR 72764</p>
-          </div>
-          <div class="contact-row">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6z"/></svg>
-            <!-- SWAP: phone number -->
-            <a href="tel:+14797172115">(479) 717-2115</a>
-          </div>
-          <div class="contact-row">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-            <div>
-              <p>Tue–Thu: 4:00 PM – 9:00 PM</p>
-              <p>Fri–Sat: 4:00 PM – 10:00 PM</p>
-              <p style="color:var(--muted);margin-top:0.3rem;font-size:0.8rem;">Closed Sunday &amp; Monday</p>
-            </div>
-          </div>
+          <p>100 W Emma Ave, Suite 115<br>Springdale, AR 72764</p><br>
+          <a href="tel:+14793347676">(479) 334-7676</a>
         </div>
-        <div class="contact-reserve">
-          <h3>Reservations</h3>
-          <p>Join us for an unforgettable evening. Reservations are highly recommended.</p>
-          <!-- SWAP: OpenTable link -->
-          <a href="https://www.opentable.com/gaskins-on-emma" target="_blank" rel="noreferrer" class="btn btn-gold" style="width:100%;text-align:center;display:block;">Reserve via OpenTable</a>
-          <div class="social-row">
-            <!-- SWAP: Instagram URL -->
-            <a href="https://www.instagram.com/gaskinsonemma" target="_blank" rel="noreferrer" class="social-btn" aria-label="Instagram">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <!-- SWAP: Facebook URL -->
-            <a href="https://www.facebook.com/gaskinsonemma" target="_blank" rel="noreferrer" class="social-btn" aria-label="Facebook">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.9v-2.89h2.538V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-            </a>
-          </div>
+        <div class="footer-card">
+          <h3>Connect</h3>
+          <p><a href="https://www.instagram.com/gaskins_on_emma/" target="_blank" rel="noreferrer">Instagram</a></p>
+          <p><a href="https://gaskinsonemma.com/" target="_blank" rel="noreferrer">Original Website</a></p>
+          <p><a href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Reservations on Resy</a></p>
         </div>
       </div>
-
-      <div class="footer-bar">
-        <p>&copy; <span id="year"></span> Gaskins on Emma. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
+      <div class="bottom"><span>© <span id="year"></span> Gaskins on Emma concept rebuild.</span><span>Photo credits remain with original owners/creators.</span></div>
     </div>
   </footer>
 
+  <div class="mobile-reserve"><a class="btn btn-primary" href="https://resy.com/cities/springdale-ut/venues/gaskins-on-emma" target="_blank" rel="noreferrer">Reserve on Resy</a></div>
+
   <script>
-    // ---- Year ----
+    const RESY_URL = 'https://resy.com/cities/springdale-ut/venues/gaskins-on-emma';
+    const menuData = [
+      {section:'lunch',cat:'For the Table',name:'Pimento Cheese',desc:'aged cheddar, roasted peppers, naan',tags:['share','vegetarian'],pair:'A chilled white wine or classic martini.',img:'./images/dining.jpg'},
+      {section:'lunch',cat:'For the Table',name:'Cheese Fries',desc:'house cheese blend, garlic aioli, bacon, chives',tags:['share','comfort'],pair:'A cold beer or whiskey highball.',img:'./images/bar.jpg'},
+      {section:'lunch',cat:'Soup & Salad',name:'Burgundy Mushroom Soup',desc:'Cup or bowl',tags:['signature','comfort'],pair:'Pinot Noir or a bold red by the glass.',img:'./images/dining.jpg'},
+      {section:'lunch',cat:'Hand Helds',name:'Gaskins Smash Burger',desc:'shallot jam, pickles, white cheddar',tags:['burger','beef'],pair:'Old Fashioned or house red.',img:'./images/steak.jpg'},
+      {section:'lunch',cat:'Hand Helds',name:'Prime Rib Focaccia Melt',desc:'mozzarella, horseradish cream, au jus',tags:['beef','signature'],pair:'Cabernet or a Manhattan.',img:'./images/filet.jpg'},
+      {section:'lunch',cat:'Rice Bowls',name:'Roasted Cauliflower Rice Bowl',desc:'golden rice, cucumber, marinated carrots, pickled onions, spiced chickpeas, garlic aioli',tags:['vegetarian'],pair:'Sparkling wine or a citrus cocktail.',img:'./images/salmon.jpg'},
+
+      {section:'dinner',cat:'Cold Bites',name:'Cold Water Oysters',desc:'honeydew, mint, cucumber',tags:['seafood','raw','gf'],pair:'Champagne, Muscadet, or a very cold martini.',img:'./images/oysters.jpg'},
+      {section:'dinner',cat:'Cold Bites',name:'Tuna Bombs',desc:'ahi tuna, yuzu kosho, chives',tags:['seafood','raw'],pair:'Sauvignon Blanc or a bright gin cocktail.',img:'./images/oysters.jpg'},
+      {section:'dinner',cat:'Hot Bites',name:'Calamari',desc:'pickled pepper relish, arugula, calabrian aioli',tags:['seafood','spicy'],pair:'Aperol spritz or crisp white wine.',img:'./images/calamari.jpg'},
+      {section:'dinner',cat:'Hot Bites',name:'Roasted Bone Marrow',desc:'shallot jam, pickled slaw, pomme purée',tags:['rich','share'],pair:'Bourbon, Bordeaux, or a deep red blend.',img:'./images/steak.jpg'},
+      {section:'dinner',cat:'Supper Time',name:'Crispy Skin Salmon',desc:'soubise & spring vegetables',tags:['seafood','gf'],pair:'Chardonnay or Pinot Noir.',img:'./images/salmon.jpg'},
+      {section:'dinner',cat:'Supper Time',name:'BBQ Shrimp & Grits',desc:'Arkansas rice grits, marinated tomatoes, chipotle beurre blanc',tags:['seafood','southern'],pair:'Riesling or a smoky mezcal cocktail.',img:'./images/calamari.jpg'},
+      {section:'dinner',cat:'Supper Time',name:'Gaskins Fried Chicken',desc:'jalapeño corn bread, rosemary velouté, local honey',tags:['comfort','signature'],pair:'Sparkling wine or a bourbon sour.',img:'./images/dining.jpg'},
+      {section:'dinner',cat:'Off the Grill',name:'Filet',desc:'8 oz. served with potato pavé',tags:['steak','beef','signature'],pair:'Cabernet Sauvignon or a classic Manhattan.',img:'./images/filet.jpg'},
+      {section:'dinner',cat:'Off the Grill',name:'New York Strip',desc:'14 oz. served with potato pavé',tags:['steak','beef'],pair:'Malbec, Syrah, or barrel-aged bourbon.',img:'./images/steak.jpg'},
+      {section:'dinner',cat:'Off the Grill',name:'Ribeye',desc:'14 oz. served with potato pavé',tags:['steak','beef','rich'],pair:'Big Cabernet or rye Old Fashioned.',img:'./images/steak.jpg'},
+      {section:'dinner',cat:'Pass the Plate',name:'Broccolini',desc:'curried labneh & toasted hazelnuts',tags:['vegetarian','gf'],pair:'Crisp white wine or gin and tonic.',img:'./images/salmon.jpg'},
+      {section:'dinner',cat:'Pass the Plate',name:'Mac & Cheese',desc:'mornay & gremolata crumble',tags:['vegetarian','comfort'],pair:'Chardonnay or a whiskey highball.',img:'./images/dining.jpg'},
+
+      {section:'family',cat:'Tier 1',name:'Tier 1 Family Style',desc:'Caesar, wedge, peri peri cauliflower, salmon, roasted chicken, sides and desserts. $55 per guest.',tags:['events','share'],pair:'Great for private dinners and group celebrations.',img:'./images/entry.jpg'},
+      {section:'family',cat:'Tier 2',name:'Tier 2 Family Style',desc:'Adds ham & cheese and NY Strip. $85 per guest.',tags:['events','steak','share'],pair:'Pair with curated bottles for the table.',img:'./images/dining.jpg'},
+      {section:'family',cat:'Tier 3',name:'Tier 3 Family Style',desc:'Adds calamari, Japanese milk bread, filet mignon and crème brûlée. $125 per guest.',tags:['events','premium','steak'],pair:'Make it a full celebration with cocktails and wine.',img:'./images/filet.jpg'},
+
+      {section:'cocktails',cat:'Cocktails',name:'Vault Martini',desc:'A crisp, polished steakhouse martini moment.',tags:['cocktail','bar'],pair:'Oysters or tuna bombs.',img:'./images/bar.jpg'},
+      {section:'cocktails',cat:'Cocktails',name:'Emma Old Fashioned',desc:'Bourbon, bitters, orange, and a darker room.',tags:['cocktail','whiskey'],pair:'Ribeye, prime rib, or bone marrow.',img:'./images/bar.jpg'},
+      {section:'cocktails',cat:'Cocktails',name:'Golden Hour Spritz',desc:'Bright, bitter, bubbly and easy before dinner.',tags:['cocktail','light'],pair:'Calamari or pimento cheese.',img:'./images/bar.jpg'},
+
+      {section:'wine',cat:'Wine',name:'Cabernet & Steak',desc:'Full-bodied reds built for filet, ribeye, and prime rib.',tags:['wine','steak'],pair:'Filet, New York Strip, or Ribeye.',img:'./images/bar.jpg'},
+      {section:'wine',cat:'Wine',name:'Champagne & Oysters',desc:'A cleaner, sharper start to the night.',tags:['wine','seafood'],pair:'Cold Water Oysters.',img:'./images/oysters.jpg'},
+      {section:'wine',cat:'Wine',name:'Chardonnay & Salmon',desc:'Round enough for soubise, bright enough for crispy skin.',tags:['wine','seafood'],pair:'Crispy Skin Salmon.',img:'./images/salmon.jpg'}
+    ];
+    const tabs = [
+      ['dinner','Dinner'],['lunch','Lunch'],['family','Family Style'],['cocktails','Cocktails'],['wine','Wine']
+    ];
+    const filters = ['all','steak','seafood','vegetarian','gf','signature','cocktail','wine','events'];
+    let currentTab = 'dinner';
+    let currentFilter = 'all';
+    const tabsEl = document.getElementById('tabs'), filtersEl = document.getElementById('filters'), board = document.getElementById('menuBoard'), search = document.getElementById('search');
+    const featureImg = document.getElementById('featureImg'), featureTitle = document.getElementById('featureTitle'), featureDesc = document.getElementById('featureDesc'), featurePair = document.getElementById('featurePair');
+
+    function titleCase(s){return s.replace(/\b\w/g,m=>m.toUpperCase())}
+    function renderTabs(){tabsEl.innerHTML = tabs.map(([id,label])=>`<button class="tab ${id===currentTab?'active':''}" data-tab="${id}">${label}</button>`).join('')}
+    function renderFilters(){filtersEl.innerHTML = filters.map(f=>`<button class="filter ${f===currentFilter?'active':''}" data-filter="${f}">${f==='all'?'All':titleCase(f)}</button>`).join('')}
+    function itemMatches(item){const q = search.value.trim().toLowerCase(); const text = [item.name,item.desc,item.cat,item.tags.join(' ')].join(' ').toLowerCase(); return item.section===currentTab && (currentFilter==='all'||item.tags.includes(currentFilter)) && (!q || text.includes(q));}
+    function spotlight(item){featureImg.src=item.img;featureTitle.textContent=item.name;featureDesc.textContent=item.desc;featurePair.textContent=item.pair;}
+    function renderMenu(){
+      renderTabs(); renderFilters();
+      const items = menuData.filter(itemMatches);
+      board.innerHTML = items.length ? items.map((item,i)=>`<article class="menu-card" data-index="${menuData.indexOf(item)}"><div class="eyebrow">${item.cat}</div><h3>${item.name}</h3><p>${item.desc}</p><div class="tag-row">${item.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></article>`).join('') : `<div class="empty">No matches. Try a different search or clear the filters.</div>`;
+      if(items[0]) spotlight(items[0]);
+    }
+    document.addEventListener('click', e=>{
+      const tab = e.target.closest('[data-tab]'); if(tab){currentTab=tab.dataset.tab; currentFilter='all'; search.value=''; renderMenu();}
+      const filter = e.target.closest('[data-filter]'); if(filter){currentFilter=filter.dataset.filter; renderMenu();}
+      const card = e.target.closest('.menu-card'); if(card){spotlight(menuData[card.dataset.index]);}
+      const jump = e.target.closest('[data-jump]'); if(jump){closeDrawer(); document.getElementById(jump.dataset.jump)?.scrollIntoView({behavior:'smooth'});}
+      const tabTarget = e.target.closest('[data-tab-target]'); if(tabTarget){currentTab=tabTarget.dataset.tabTarget; currentFilter='all'; search.value=''; renderMenu(); document.getElementById('menu')?.scrollIntoView({behavior:'smooth'});}
+    });
+    search.addEventListener('input', renderMenu);
+    document.getElementById('clearBtn').addEventListener('click',()=>{search.value=''; currentFilter='all'; renderMenu();});
+
+    const nav = document.getElementById('nav');
+    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+    const hamburger = document.getElementById('hamburger'), drawer = document.getElementById('drawer');
+    function closeDrawer(){drawer.classList.remove('open'); hamburger.classList.remove('active'); document.body.classList.remove('menu-open')}
+    hamburger.addEventListener('click',()=>{drawer.classList.toggle('open'); hamburger.classList.toggle('active'); document.body.classList.toggle('menu-open')});
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ---- Smooth scroll ----
-    function scrollTo(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // ---- Sticky nav ----
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    // ---- Mobile menu ----
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('open', menuOpen);
-      hamburger.innerHTML = menuOpen
-        ? '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
-        : '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
-    });
-    function mobileNav(id) {
-      menuOpen = false;
-      mobileMenu.classList.remove('open');
-      hamburger.innerHTML = '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
-      scrollTo(id);
-    }
-
-    // ---- Menu tabs ----
-    function showTab(tabName) {
-      document.querySelectorAll('.menu-tab').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.tab === tabName);
-      });
-      document.querySelectorAll('.menu-panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
-      const target = document.getElementById('tab-' + tabName);
-      if (target) target.classList.add('active');
-    }
-    document.querySelectorAll('.menu-tab').forEach(btn => {
-      btn.addEventListener('click', () => showTab(btn.dataset.tab));
-    });
-
-    // ---- Scroll reveal ----
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    renderMenu();
   </script>
-
 </body>
 </html>
